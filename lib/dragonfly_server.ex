@@ -20,6 +20,7 @@ defmodule DragonflyServer do
 
     if Mix.env == :prod do
       start_new_relic
+      setup_bugsnag
     end
 
     result
@@ -42,5 +43,11 @@ defmodule DragonflyServer do
       :statman_server.add_subscriber(:statman_aggregator)
       :newrelic_poller.start_link(&:newrelic_statman.poll/0)
     end
+  end
+
+  defp setup_bugsnag do
+    # if Config.bugsnag_api_key do
+      Application.put_env(:bugsnag, :api_key, Config.bugsnag_api_key)
+    # end
   end
 end

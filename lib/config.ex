@@ -83,4 +83,8 @@ defmodule Config do
   def new_relic_license do
     System.get_env("NEW_RELIC_LICENSE_KEY")
   end
+
+  def bugsnag_api_key do
+    System.get_env("BUGSNAG_API_KEY")
+  end
 end

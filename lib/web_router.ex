@@ -8,6 +8,7 @@ defmodule WebRouter do
   if Mix.env == :prod do
     plug Plug.NewRelic
   end
+  use Plugsnag
   plug Plug.Logger
   plug Plug.Head
   plug :match
